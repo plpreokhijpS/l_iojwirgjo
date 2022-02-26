@@ -3812,6 +3812,18 @@ end
 	        Sec()
 	    end
 	end)
+	Hop_Sword:Button("Hop SoulBoss",function()
+	    if _G.SelectWeapon == nil then
+	        Not()
+	        Not()
+	        Not()
+	        Not()
+	        Not()
+	    else
+	        setclipboard("_G.SoulBoss = true\n_G.Hop = true \n_G.SelectWeapon =".."'".._G.SelectWeapon.."'")
+	        Sec()
+	    end
+	end)
 	----------------------------------------- Hop
 	page1:Label("AutoFarm Level")
 
@@ -4051,8 +4063,8 @@ if _G.SoulBoss then
 else
     _G.SoulBoss = false
 end
-page3:Toggle("Auto Flame Emperor",_G.SoulBoss,function(vu)
-    _G.SelectBoss = "Flame Emperor [Boss]"
+page3:Toggle("Auto SoulBoss",_G.SoulBoss,function(vu)
+    _G.SelectBoss = "SoulBoss"
     _G.Auto_Farm_Boss = vu
 end)
 
