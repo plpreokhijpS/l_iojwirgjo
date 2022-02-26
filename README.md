@@ -3977,13 +3977,13 @@ end)
 --page1:Label("AutoFarm Misc")
 
 page1:Toggle("Auto Candy",false,function(vu)
-    BringFruit = vu
+    
 end)
 page1:Toggle("Auto LP",false,function(vu)
-    BringFruit = vu
+    
 end)
 page1:Toggle("Bring Fruit",false,function(vu)
-    BringFruit = vu
+    
 end)
 page1:Toggle("Anti AFK",true,function(vu)
     _G.AntiAFK = vu
@@ -4446,7 +4446,7 @@ spawn(function()
 end)
 spawn(function()
     while wait(.3) do
-        if BringFruit or _G.Hop_Fruit then
+        if BringFruit  then
                 for i,v in pairs(game:GetService("Workspace").Maps:GetChildren()) do
                     pcall(function()
                 		     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
