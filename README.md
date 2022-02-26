@@ -3725,6 +3725,7 @@ wait(3)
 	local page1 = Tap2:newpage()
 	local page2 = Tap2:newpage()
 	local page3 = Tap2:newpage()
+	local sti = Tap2:newpage()
 	local page10 = Tap2:newpage()
 	local page4 = Tap3:newpage()
 	local page5 = Tap5:newpage()
@@ -4079,6 +4080,90 @@ page3:Toggle("Auto SoulBoss",_G.SoulBoss,function(vu)
     _G.Auto_Farm_Boss = vu
 end)
 
+sti:Label("Setting Farm")
+
+sti:Toggle("Auto Skill Z",false,function(vu)
+    _G.Auto_Skill_Z = vu
+end)
+sti:Toggle("Auto Skill X",false,function(vu)
+    _G.Auto_Skill_X = vu
+end)
+sti:Toggle("Auto Skill C",false,function(vu)
+    _G.Auto_Skill_C = vu
+end)
+sti:Toggle("Auto Skill V",false,function(vu)
+    _G.Auto_Skill_V = vu
+end)
+local vim = game:service("VirtualInputManager")
+local function hold(keyCode, time)
+    vim:SendKeyEvent(true, keyCode, false, game)
+    task.wait(time)
+    vim:SendKeyEvent(false, keyCode, false, game)
+end
+spawn(function()
+    while wait(3) do
+        if game:GetService("Players").LocalPlayer.PlayerGui.QuestGui.Enabled == true then
+            spawn(function()
+                while wait(2) do
+                    if _G.Auto_Skill_X then
+                        hold(Enum.KeyCode.X, 1)
+                    end
+                end
+            end)
+            spawn(function()
+                while wait(2) do
+                    if _G.Auto_Skill_C then
+                        hold(Enum.KeyCode.C, 1)
+                    end
+                end
+            end)
+            spawn(function()
+                while wait(2) do
+                    if _G.Auto_Skill_Z then
+                        hold(Enum.KeyCode.Z, 1)
+                    end
+                end
+            end)
+            spawn(function()
+                while wait(2) do
+                    if _G.Auto_Skill_V then
+                        hold(Enum.KeyCode.V, 1)
+                    end
+                end
+            end)
+        elseif _G.Skill and _G.Auto_Farm_Boss then
+            spawn(function()
+                while wait(2) do
+                    if _G.Auto_Skill_X then
+                        hold(Enum.KeyCode.X, 1)
+                    end
+                end
+            end)
+            spawn(function()
+                while wait(2) do
+                    if _G.Auto_Skill_C then
+                        hold(Enum.KeyCode.C, 1)
+                    end
+                end
+            end)
+            spawn(function()
+                while wait(2) do
+                    if _G.Auto_Skill_Z then
+                        hold(Enum.KeyCode.Z, 1)
+                    end
+                end
+            end)
+            spawn(function()
+                while wait(2) do
+                    if _G.Auto_Skill_V then
+                        hold(Enum.KeyCode.V, 1)
+                    end
+                end
+            end)
+        end
+    end
+end)
+
 --------------------------------------------------------------------------------------------------------------page
 page10:Label("Fruit Sniper")
 
@@ -4194,6 +4279,9 @@ end)
 page4:Button("Colosseum Island",function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5176.9731445312, 19.56644821167, -2256.619140625)
 end)
+page4:Button("Valenti Island",function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5101.6806640625, 58.35903549194336, -5771.314453125)
+end)
 
 page8:Label("Teleport NPC")
 
@@ -4221,7 +4309,7 @@ page8:Button("NPC Pole",function()
 end)
 page8:Line()
 page8:Button("NPC Random Fruit",function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(298.78115844727, 40.501708984375, -1885.5700683594)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5101.6806640625, 58.35903549194336, -5771.314453125)
 end)
 page8:Button("NPC Haki",function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2202.8803710938, 136.26412963867, -2478.4768066406)
@@ -4551,11 +4639,13 @@ spawn(function()
                                 _G.Min = -6.5
                             end
                             pcall(function()
+                                _G.Skill = true
                             repeat game:GetService("RunService").Stepped:wait(0.2)
                                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,_G.Min,0)
                                 game:GetService'VirtualUser':CaptureController()
                                 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                             until v.Humanoid.Health <= 0 or _G.Auto_Farm_Boss == false or not v.Parent
+                            _G.Skill = false
                             end)
                             game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
                             CLip = false
@@ -4568,6 +4658,7 @@ spawn(function()
                         end
                     end
                 else
+                    _G.Skill = false
                     Clip = false
                     print(_G.SelectBoss)
                     wait(10)
