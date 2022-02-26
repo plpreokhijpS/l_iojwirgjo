@@ -4045,6 +4045,17 @@ page3:Toggle("Auto Flame Emperor",_G.FlameBoss,function(vu)
     _G.SelectBoss = "Flame Emperor [Boss]"
     _G.Auto_Farm_Boss = vu
 end)
+
+if _G.SoulBoss then
+    _G.SoulBoss = true
+else
+    _G.SoulBoss = false
+end
+page3:Toggle("Auto Flame Emperor",_G.SoulBoss,function(vu)
+    _G.SelectBoss = "Flame Emperor [Boss]"
+    _G.Auto_Farm_Boss = vu
+end)
+
 --------------------------------------------------------------------------------------------------------------page
 page10:Label("Fruit Sniper")
 
@@ -4378,9 +4389,12 @@ function CheckQuest()
     elseif Lv >= 1200 and Lv < 1400 then 
         _G.Ms = "Monkey [Lv:1150]"
         Qn = "Monkey"
-    elseif Lv >= 1400 then 
+    elseif Lv >= 1400 and Lv < 1600 then 
         _G.Ms = "Skeleton [Lv:1400]"
         Qn = "Skeleton"
+    elseif Lv >= 1600 then 
+        _G.Ms = "Woman Pirate [Lv:1600]"
+        Qn = "Woman Pirate"
     end
 end
 
