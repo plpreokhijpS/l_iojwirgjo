@@ -3702,6 +3702,15 @@ function Next()
     Duration = 2; -- how long the notification should in secounds
     })
 end
+
+-----------------------------------------
+for i,v in pairs(game:GetService("Workspace").Maps:GetChildren()) do
+    if v.Name == "Part" then
+        v:Destroy()
+    end
+end
+wait(3)
+-----------------------------------------
 ----------------------------------------- Gui Go
 	local Window = create:Win("L I V E R - H U B    |    L A S T - P I R A T E ")
 	local Tap1 = Window:Taps("Hop")
@@ -3881,6 +3890,8 @@ spawn(function()
         end
     end
 end)
+
+
 	
 	local SelectWeapona = page1:Drop("Select Weapon",false,Wapon,function(Value)
 		_G.SelectWeapon = Value
@@ -3977,13 +3988,13 @@ end)
 --page1:Label("AutoFarm Misc")
 
 page1:Toggle("Auto Candy",false,function(vu)
-    
+    BringFruit = vu
 end)
 page1:Toggle("Auto LP",false,function(vu)
-    
+    BringFruit = vu
 end)
 page1:Toggle("Bring Fruit",false,function(vu)
-    
+    BringFruit = vu
 end)
 page1:Toggle("Anti AFK",true,function(vu)
     _G.AntiAFK = vu
@@ -4446,7 +4457,7 @@ spawn(function()
 end)
 spawn(function()
     while wait(.3) do
-        if BringFruit  then
+        if BringFruit or _G.Hop_Fruit  then
                 for i,v in pairs(game:GetService("Workspace").Maps:GetChildren()) do
                     pcall(function()
                 		     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
