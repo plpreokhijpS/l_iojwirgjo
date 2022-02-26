@@ -3924,12 +3924,12 @@ end)
 		Hop_SelectWeapon:Clear()
 		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
 			if v:IsA("Tool") then
-				SelectWeapona:Add(v.Name)
+				Hop_SelectWeapon:Add(v.Name)
 			end
 		end
 		for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
 			if v:IsA("Tool") then
-				SelectWeapona:Add(v.Name)
+				Hop_SelectWeapon:Add(v.Name)
 			end
 		end
 	end)
