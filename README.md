@@ -4569,10 +4569,12 @@ spawn(function()
         if _G.Hop_Fruit then
            for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
                 if v:IsA("Tool") then
-                    if string.find(v.Name,_G.IKAI) then
-                        EquipWeapon(v.Name)
-                        wait(0.7)
-                        game:GetService("ReplicatedStorage").DFEat:InvokeServer(v.DF.Value)
+                    if _G.IKAI then
+                        if string.find(v.Name,_G.IKAI) then
+                            EquipWeapon(v.Name)
+                            wait(0.7)
+                            game:GetService("ReplicatedStorage").DFEat:InvokeServer(v.DF.Value)
+                        end
                     end
                     wait(3)
                     if _G.Hop then
