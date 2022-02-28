@@ -4547,7 +4547,23 @@ function CheckQuest()
 end
 
 
+local health = game.Players.LocalPlayer.Character.Humanoid.Health --current mob's health
+local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth --max mob's health
+local percent = (health / maxhealth) * 100 --percentage
+print(percent.. "%")
 
+if percent < Health_None and _G.Auto_Health then
+    Health_None = Health_None + 20
+    repeat wait(2)
+        _G.Auto_Farm_Boss = false
+        _G.Auto_Farm = false
+    until percent >= Health_Max or _G.Auto_Health == false
+    if _G.Auto_Farm == false then
+        _G.Auto_Farm = true
+    elseif _G.Auto_Farm_Boss == false then
+        _G.Auto_Farm_Boss = true
+    end
+end
 spawn(function()
     while wait(.3) do
         pcall(function()
@@ -4583,13 +4599,15 @@ end)
 spawn(function()
     while wait(.3) do
         if BringFruit or _G.Hop_Fruit  then
-                for i,v in pairs(game:GetService("Workspace").Maps:GetChildren()) do
-                    pcall(function()
-                		     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-                		     wait(0.2)
-                			 fireproximityprompt(v.ProximityPrompt)
-                   end)
-                end
+            for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+                pcall(function()
+                    if v.Anchored == false and v.Name ~= "Part" and v:IsA("Part") and v.Name ~= "FactoryButton" then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                        wait(0.2)
+                        fireproximityprompt(v.ProximityPrompt)
+                    end
+                end)
+            end
         end
     end
 end)
@@ -4683,7 +4701,7 @@ spawn(function()
                                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,_G.Min,0)
                                 game:GetService'VirtualUser':CaptureController()
                                 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                            until v.Humanoid.Health <= 0 or _G.Auto_Farm_Boss == false or not v.Parent
+                            until v.Humanoid.Health <= 0 or _G.Auto_Farm_Boss == false or not v
                             _G.Skill = false
                             end)
                             game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
