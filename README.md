@@ -19,7 +19,7 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
    vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 end)
 
-    spawn(function()
+   spawn(function()
         while wait(10) do
             pcall(function()
                 for i,v in pairs(game:GetService("CoreGui"):GetDescendants()) do
@@ -4083,7 +4083,7 @@ else
     _G.SoulBoss = false
 end
 page3:Toggle("Auto SoulBoss",_G.SoulBoss,function(vu)
-    _G.SelectBoss = "SoulBoss"
+    _G.SelectBoss = "Soul Boss"
     _G.Auto_Farm_Boss = vu
 end)
 
