@@ -4547,23 +4547,6 @@ function CheckQuest()
 end
 
 
-local health = game.Players.LocalPlayer.Character.Humanoid.Health --current mob's health
-local maxhealth = game.Players.LocalPlayer.Character.Humanoid.MaxHealth --max mob's health
-local percent = (health / maxhealth) * 100 --percentage
-print(percent.. "%")
-
-if percent < Health_None and _G.Auto_Health then
-    Health_None = Health_None + 20
-    repeat wait(2)
-        _G.Auto_Farm_Boss = false
-        _G.Auto_Farm = false
-    until percent >= Health_Max or _G.Auto_Health == false
-    if _G.Auto_Farm == false then
-        _G.Auto_Farm = true
-    elseif _G.Auto_Farm_Boss == false then
-        _G.Auto_Farm_Boss = true
-    end
-end
 spawn(function()
     while wait(.3) do
         pcall(function()
