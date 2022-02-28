@@ -3843,6 +3843,20 @@ end
 	end)
 	----------------------------------------- Hop
 	page1:Label("AutoFarm Level")
+	Time = page1:Label("Server Time")
+	local function UpdateTime()
+		local GameTime = math.floor(workspace.DistributedGameTime+0.5)
+		local Hour = math.floor(GameTime/(60^2))%24
+		local Minute = math.floor(GameTime/(60^1))%60
+		local Second = math.floor(GameTime/(60^0))%60
+		Time:Change("Hour : "..Hour.." Minute : "..Minute.." Second : "..Second)
+	end
+	spawn(function()
+		while true do
+			UpdateTime()
+			game:GetService("RunService").RenderStepped:Wait()
+		end
+	end)
 
 	page1:Toggle("AutoFarm",false,function(vu)
 	    _G.Auto_Farm = vu
@@ -3874,7 +3888,7 @@ end
                 if EP then
                     _G.DL = true
                     EquipWeapon(_G.SelectWeapon)
-                elseif _G.Auto_Farm_Boss then
+                elseif _G.Auto_Farm_Boss or _G.Auto_Farm then
                     _G.DL = true
                     EquipWeapon(_G.SelectWeapon)
                 end
@@ -4288,6 +4302,22 @@ page4:Button("Colosseum Island",function()
 end)
 page4:Button("Valenti Island",function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5101.6806640625, 58.35903549194336, -5771.314453125)
+end)
+function KOP()
+            local Px = Instance.new("Part")
+                Px.Name = "Px"
+                Px.Parent = game.Workspace
+                Px.Anchored = true
+                Px.Color = Color3.fromRGB(255, 255, 0)
+                Px.Size = Vector3.new(15,0.5,15)
+                Px.Material = "Neon"
+                Px.Transparency = 0.5
+                game.Workspace["Px"].CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y - 3.3,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z)
+end
+page4:Button("SeaBeats Island",function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5567.20458984375, 30.21596336364746, 1476.8565673828125)
+    wait(0.2)
+    KOP()
 end)
 
 page8:Label("Teleport NPC")
