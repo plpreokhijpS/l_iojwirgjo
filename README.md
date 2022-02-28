@@ -4010,10 +4010,10 @@ end)
 --page1:Label("AutoFarm Misc")
 
 page1:Toggle("Auto Candy",false,function(vu)
-    BringFruit = vu
+    -- BringFruit = vu
 end)
 page1:Toggle("Auto LP",false,function(vu)
-    BringFruit = vu
+    -- BringFruit = vu
 end)
 page1:Toggle("Bring Fruit",false,function(vu)
     BringFruit = vu
@@ -4684,14 +4684,13 @@ spawn(function()
                                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,_G.Min,0)
                                 game:GetService'VirtualUser':CaptureController()
                                 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                            until v.Humanoid.Health <= 0 or _G.Auto_Farm_Boss == false or not v
+                            until v.Humanoid.Health <= 0 or _G.Auto_Farm_Boss == false or not v.Parent or game.Players.LocalPlayer.Character.Humanoid.Health <= 0
                             _G.Skill = false
                             end)
                             game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
                             CLip = false
                             if _G.PO then
                                 _G.Auto_Farm = true
-                                wait(1)
                                 _G.Auto_Farm_Boss = false
                             end
                             end)
