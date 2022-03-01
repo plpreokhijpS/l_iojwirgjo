@@ -4869,9 +4869,34 @@ end)
 
 boss:Label("Select Boss")
 
-boss:Toggle("AutoFarm Boss",false,function(vu)
+local ALL_BOSS = {
+    "Sea Beast",
+    "Sword Man [Boss]",
+    "God Of Lighting",
+    "Flame Emperor [Boss]",
+    "Factory",
+    "Soul Boss",
+    "TreeMoster"
+}
+boss:Toggle("AutoFarm ALL Boss",false,function(vu)
     _G.Auto_Farm_Boss = vu
 end)
+
+boss:Toggle("AutoFarm Boss",false,function(vu)
+    _G.Auto_Farm_All_Boss = vu
+end)
+spawn(function()
+    while wait(1) do
+        if _G.Auto_Farm_All_Boss then
+            for i, v in pairs(game:GetService("Workspace").Lives:FindFirstChild(ALL_BOSS)) do
+                _G.SelectBoss = v
+                _G.Auto_Farm_Boss = true
+            end
+            _G.Auto_Farm_Boss = false
+        end
+    end
+end)
+
     local Boss = {}
     for i, v in pairs(game:GetService("Workspace").Lives:GetChildren()) do
 		if v.Name == "Sea Beast" then
