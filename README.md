@@ -4121,69 +4121,64 @@ local function hold(keyCode, time)
     task.wait(time)
     vim:SendKeyEvent(false, keyCode, false, game)
 end
-spawn(function()
-    while wait(3) do
-        if game:GetService("Players").LocalPlayer.PlayerGui.QuestGui.Enabled == true then
+
             spawn(function()
-                while wait(2) do
-                    if _G.Auto_Skill_X then
+                while wait(3) do
+                    if _G.Auto_Skill_X and game:GetService("Players").LocalPlayer.PlayerGui.QuestGui.Enabled == true then
                         hold(Enum.KeyCode.X, 1)
                     end
                 end
             end)
             spawn(function()
-                while wait(2) do
-                    if _G.Auto_Skill_C then
+                while wait(4) do
+                    if _G.Auto_Skill_C and game:GetService("Players").LocalPlayer.PlayerGui.QuestGui.Enabled == true then
                         hold(Enum.KeyCode.C, 1)
                     end
                 end
             end)
             spawn(function()
-                while wait(2) do
-                    if _G.Auto_Skill_Z then
+                while wait(5) do
+                    if _G.Auto_Skill_Z and game:GetService("Players").LocalPlayer.PlayerGui.QuestGui.Enabled == true then
                         hold(Enum.KeyCode.Z, 1)
                     end
                 end
             end)
             spawn(function()
-                while wait(2) do
-                    if _G.Auto_Skill_V then
+                while wait(6) do
+                    if _G.Auto_Skill_V and game:GetService("Players").LocalPlayer.PlayerGui.QuestGui.Enabled == true then
                         hold(Enum.KeyCode.V, 1)
                     end
                 end
             end)
-        elseif _G.Skill and _G.Auto_Farm_Boss then
+
             spawn(function()
-                while wait(2) do
-                    if _G.Auto_Skill_X then
+                while wait(3) do
+                    if _G.Auto_Skill_X and _G.Auto_Farm_Boss then
                         hold(Enum.KeyCode.X, 1)
                     end
                 end
             end)
             spawn(function()
-                while wait(2) do
-                    if _G.Auto_Skill_C then
+                while wait(4) do
+                    if _G.Auto_Skill_C and _G.Auto_Farm_Boss then
                         hold(Enum.KeyCode.C, 1)
                     end
                 end
             end)
             spawn(function()
-                while wait(2) do
-                    if _G.Auto_Skill_Z then
+                while wait(5) do
+                    if _G.Auto_Skill_Z and _G.Auto_Farm_Boss then
                         hold(Enum.KeyCode.Z, 1)
                     end
                 end
             end)
             spawn(function()
-                while wait(2) do
-                    if _G.Auto_Skill_V then
+                while wait(6) do
+                    if _G.Auto_Skill_V and _G.Auto_Farm_Boss then
                         hold(Enum.KeyCode.V, 1)
                     end
                 end
             end)
-        end
-    end
-end)
 
 --------------------------------------------------------------------------------------------------------------page
 page10:Label("Fruit Sniper")
