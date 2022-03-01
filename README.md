@@ -3734,6 +3734,7 @@ wait(3)
 	local page3 = Tap2:newpage()
 	local sti = Tap2:newpage()
 	local page10 = Tap2:newpage()
+	local boss = Tap2:newpage()
 	local page4 = Tap3:newpage()
 	local page5 = Tap5:newpage()
 	local page6 = Tap4:newpage()
@@ -4865,6 +4866,68 @@ spawn(function()
         end
     end
 end)
+
+boss:Label("Select Boss")
+
+boss:Toggle("AutoFarm Boss",false,function(vu)
+    _G.Auto_Farm_Boss = vu
+end)
+    local Boss = {}
+    for i, v in pairs(game:GetService("Workspace").Lives:GetChildren()) do
+		if v.Name == "Sea Beast" then
+			table.insert(Boss, v.Name)
+		end
+		if v.Name == "Sword Man [Boss]" then
+			table.insert(Boss, v.Name)
+		end
+		if v.Name == "God Of Lighting" then
+			table.insert(Boss, v.Name)
+		end
+		if v.Name == "Flame Emperor [Boss]" then
+			table.insert(Boss, v.Name)
+		end
+		if v.Name == "Factory" then
+			table.insert(Boss, v.Name)
+		end
+		if v.Name == "Soul Boss" then
+			table.insert(Boss, v.Name)
+		end
+		if v.Name == "TreeMoster" then
+			table.insert(Boss, v.Name)
+		end
+	end
+local SelectBossP = boss:Drop("Select Boss",false,Boss,function(Value)
+		_G.SelectBoss = Value
+end)
+
+boss:Button("Refresh Boss",function()
+    SelectBossP:Clear()
+    local Boss = {}
+    for i, v in pairs(game:GetService("Workspace").Lives:GetChildren()) do
+		if v.Name == "Sea Beast" then
+			SelectBossP:Add(v.Name)
+		end
+		if v.Name == "Sword Man [Boss]" then
+			SelectBossP:Add(v.Name)
+		end
+		if v.Name == "God Of Lighting" then
+			SelectBossP:Add(v.Name)
+		end
+		if v.Name == "Flame Emperor [Boss]" then
+			SelectBossP:Add(v.Name)
+		end
+		if v.Name == "Factory" then
+			SelectBossP:Add(v.Name)
+		end
+		if v.Name == "Soul Boss" then
+			SelectBossP:Add(v.Name)
+		end
+		if v.Name == "TreeMoster" then
+			SelectBossP:Add(v.Name)
+		end
+	end
+end)
+
 ----------------------------------------- Script
 
 
