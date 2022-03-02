@@ -4883,18 +4883,7 @@ boss:Toggle("AutoFarm ALL Boss",false,function(vu)
 end)
 
 boss:Toggle("AutoFarm Boss",false,function(vu)
-    _G.Auto_Farm_All_Boss = vu
-end)
-spawn(function()
-    while wait(1) do
-        if _G.Auto_Farm_All_Boss then
-            for i, v in pairs(game:GetService("Workspace").Lives:FindFirstChild(ALL_BOSS)) do
-                _G.SelectBoss = v
-                _G.Auto_Farm_Boss = true
-            end
-            _G.Auto_Farm_Boss = false
-        end
-    end
+    _G.Auto_Farm_Boss = vu
 end)
 
     local Boss = {}
@@ -4918,6 +4907,9 @@ end)
 			table.insert(Boss, v.Name)
 		end
 		if v.Name == "TreeMoster" then
+			table.insert(Boss, v.Name)
+		end
+		if v.Name == "FishmanBoss" then
 			table.insert(Boss, v.Name)
 		end
 	end
@@ -4948,6 +4940,9 @@ boss:Button("Refresh Boss",function()
 			SelectBossP:Add(v.Name)
 		end
 		if v.Name == "TreeMoster" then
+			SelectBossP:Add(v.Name)
+		end
+		if v.Name == "FishmanBoss" then
 			SelectBossP:Add(v.Name)
 		end
 	end
